@@ -88,8 +88,8 @@ class SuperPointNet(torch.nn.Module):
         # Shared Encoder.
         self.conv1a = torch.nn.Conv2d(1, c1, kernel_size=3, stride=1, padding=1)
         self.conv1b = torch.nn.Conv2d(c1, c1, kernel_size=3, stride=1, padding=1)
-        self.conv2a = torch.nn.Conv2d(c1, c2, kernel_size=3, stride=1, padding=1)
-        self.conv2b = torch.nn.Conv2d(c2, c2, kernel_size=3, stride=1, padding=1)
+        self.conv2a = torch.nn.Conv2d(c1, c2, kernel_size=3, stride=1, padding=1) 
+        self.conv2b = torch.nn.Conv2d(c2, c2, kernel_size=3, stride=1, padding=1) 
         self.conv3a = torch.nn.Conv2d(c2, c3, kernel_size=3, stride=1, padding=1)
         self.conv3b = torch.nn.Conv2d(c3, c3, kernel_size=3, stride=1, padding=1)
         self.conv4a = torch.nn.Conv2d(c3, c4, kernel_size=3, stride=1, padding=1)
@@ -655,9 +655,8 @@ if __name__ == '__main__':
         # Process the file
         with open(reloc_file, 'r') as f:
             lines = f.readlines()
+        lines = [l for l in lines if not l.startswith('#')]
         for line in tqdm(lines, total=len(lines)):
-            if line.startswith('#'):
-                continue
             l = line.rstrip().split(" ")
 
             img_source_cam0_path = os.path.join(folder_source, 'undistorted_images/cam0', l[0] + '.png')

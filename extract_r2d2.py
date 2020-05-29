@@ -88,9 +88,8 @@ if __name__ == '__main__':
         # Process the file
         with open(reloc_file, 'r') as f:
             lines = f.readlines()
+        lines = [l for l in lines if not l.startswith('#')]
         for line in tqdm(lines, total=len(lines)):
-            if line.startswith('#'):
-                continue
             l = line.rstrip().split(" ")
 
             img_source_cam0_path = os.path.join(folder_source, 'undistorted_images/cam0', l[0] + '.png')
