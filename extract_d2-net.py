@@ -123,6 +123,10 @@ parser.add_argument(
     help='path to dataset.'
 )
 parser.add_argument(
+    '--output-path', type=str, required=True,
+    help='path to save the results.'
+)
+parser.add_argument(
     '--test-sequence', type=int, default=0,
     help='test sequence, select either 0 or 1'
 )
@@ -150,6 +154,10 @@ else:
     exit('Test sequence can either be 0 or 1.')
 tasks = ['easy', 'moderate', 'hard']
 
+# check if output folder exists
+if not os.path.isdir(args.output_path):
+    os.makedirs(args.output_path)
+
 # folder source
 folder_source = os.path.join(args.dataset_path, source_seq)
 # folder target
@@ -172,7 +180,7 @@ for tsk in tasks:
 
     # Result file
     reloc_result = open(
-        os.path.join(folder_source, 'relocalizationResult_d2-net_eccv-challenge-' + target_seq + '_' + tsk + '.txt'),
+        os.path.join(args.output_path, 'relocalizationResult_d2-net_eccv-challenge-' + target_seq + '_' + tsk + '.txt'),
         'w')
 
     # Process the file

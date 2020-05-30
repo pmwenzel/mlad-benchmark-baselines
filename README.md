@@ -45,7 +45,7 @@ The code expects the following data structure after extraction of the files.
 
 ## Baselines
 
-The baselines for our challenge are based on the following GitHub projects:
+The baselines for our challenge are currently based on the following GitHub projects:
 
 * [R2D2](https://github.com/naver/r2d2)
 * [D2-Net](https://github.com/mihaidusmanu/d2-net)
@@ -53,14 +53,24 @@ The baselines for our challenge are based on the following GitHub projects:
 
 ## Running the code
 
-To run all the baselines for `test_sequence0` run the following:
+To run the baselines for `test_sequence0` run the following:
 
 ```
-bash run_baselines.sh /path/to/dataset 0
+bash run_baselines.sh /path/to/dataset /path/to/output/folder 0
 ```
 
-To run all the baselines for `test_sequence1` run the following:
+To run the baselines for `test_sequence1` run the following:
 
 ```
-bash run_baselines.sh /path/to/dataset 1
+bash run_baselines.sh /path/to/dataset /path/to/output/folder 1
+```
+
+## Results
+
+The result of each re-localization file will be saved as a `.txt` file in the format as expected to be submitted to the challenge. 
+
+Each line of these text-files is saved in the following way: 
+
+```
+source_kf target_kf t_x t_y t_z q_x q_y q_z q_w
 ```

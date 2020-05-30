@@ -30,6 +30,7 @@ if __name__ == '__main__':
     parser.add_argument("--repeatability-thr", type=float, default=0.7)
     parser.add_argument("--gpu", type=int, nargs='+', default=[0], help='use -1 for CPU')
     parser.add_argument("--dataset-path", type=str, required=True, help='path to dataset.')
+    parser.add_argument("--output-path", type=str, required=True, help='path to save the results.')
     parser.add_argument("--test-sequence", type=int, default=0, help='test sequence, select either 0 or 1')
 
     args = parser.parse_args()
@@ -56,6 +57,10 @@ if __name__ == '__main__':
 
     tasks = ['easy', 'moderate', 'hard']
 
+    # check if output folder exists
+    if not os.path.isdir(args.output_path):
+        os.makedirs(args.output_path)
+
     # folder source
     folder_source = os.path.join(args.dataset_path, source_seq)
     # folder target
@@ -81,7 +86,7 @@ if __name__ == '__main__':
                                   'relocalizationFile_' + target_seq + '_' + tsk + '.txt')
         # Result file
         reloc_result = open(
-            os.path.join(folder_source,
+            os.path.join(args.output_path,
                          'relocalizationResult_r2d2_eccv-challenge-' + target_seq + '_' + tsk + '.txt'),
             'w')
 

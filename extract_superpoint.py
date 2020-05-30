@@ -88,8 +88,8 @@ class SuperPointNet(torch.nn.Module):
         # Shared Encoder.
         self.conv1a = torch.nn.Conv2d(1, c1, kernel_size=3, stride=1, padding=1)
         self.conv1b = torch.nn.Conv2d(c1, c1, kernel_size=3, stride=1, padding=1)
-        self.conv2a = torch.nn.Conv2d(c1, c2, kernel_size=3, stride=1, padding=1) 
-        self.conv2b = torch.nn.Conv2d(c2, c2, kernel_size=3, stride=1, padding=1) 
+        self.conv2a = torch.nn.Conv2d(c1, c2, kernel_size=3, stride=1, padding=1)
+        self.conv2b = torch.nn.Conv2d(c2, c2, kernel_size=3, stride=1, padding=1)
         self.conv3a = torch.nn.Conv2d(c2, c3, kernel_size=3, stride=1, padding=1)
         self.conv3b = torch.nn.Conv2d(c3, c3, kernel_size=3, stride=1, padding=1)
         self.conv4a = torch.nn.Conv2d(c3, c4, kernel_size=3, stride=1, padding=1)
@@ -602,6 +602,7 @@ if __name__ == '__main__':
     parser.add_argument('--cuda', action='store_true',
                         help='Use cuda GPU to speed up network processing speed (default: False)')
     parser.add_argument('--dataset-path', type=str, required=True, help='path to dataset.')
+    parser.add_argument('--output-path', type=str, required=True, help='path to save the results.')
     parser.add_argument('--test-sequence', type=int, default=0, help='test sequence, select either 0 or 1')
 
     opt = parser.parse_args()
@@ -626,6 +627,10 @@ if __name__ == '__main__':
         exit('Test sequence can either be 0 or 1.')
     tasks = ['easy', 'moderate', 'hard']
 
+    # check if output folder exists
+    if not os.path.isdir(opt.output_path):
+        os.makedirs(opt.output_path)
+
     # folder source
     folder_source = os.path.join(opt.dataset_path, source_seq)
     # folder target
@@ -648,7 +653,7 @@ if __name__ == '__main__':
 
         # Result file
         reloc_result = open(
-            os.path.join(folder_source,
+            os.path.join(opt.output_path,
                          'relocalizationResult_superpoint_eccv-challenge-' + target_seq + '_' + tsk + '.txt'),
             'w')
 
