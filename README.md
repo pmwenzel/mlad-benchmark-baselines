@@ -74,3 +74,6 @@ Each line of these text-files is saved in the following way:
 ```
 source_kf target_kf t_x t_y t_z q_x q_y q_z q_w
 ```
+
+## Licence
+The code is provided under a BSD 3-clause license. See the LICENSE file for details. Note also the different licenses of thirdparty submodules.
