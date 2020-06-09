@@ -50,6 +50,7 @@ The baselines for our challenge are currently based on the following GitHub proj
 * [R2D2](https://github.com/naver/r2d2)
 * [D2-Net](https://github.com/mihaidusmanu/d2-net)
 * [SuperPoint](https://github.com/magicleap/SuperPointPretrainedNetwork)
+* [SuperGlue](https://github.com/magicleap/SuperGluePretrainedNetwork)
 
 ## Running the code
 

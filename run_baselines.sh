@@ -17,3 +17,6 @@ python extract_d2-net.py --dataset-path $folder_dir --output-path $output_dir --
 
 echo "Extracting r2d2"
 python extract_r2d2.py --dataset-path $folder_dir --output-path $output_dir --test-sequence $sequence_id
+
+echo "Extracting superglue"
+python extract_superglue.py --dataset-path $folder_dir --output-path $output_dir --test-sequence $sequence_id

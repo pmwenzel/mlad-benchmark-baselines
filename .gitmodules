@@ -7,3 +7,6 @@
 [submodule "third_party/SuperPointPretrainedNetwork"]
 	path = third_party/SuperPointPretrainedNetwork
 	url = https://github.com/magicleap/SuperPointPretrainedNetwork.git
+[submodule "third_party/SuperGluePretrainedNetwork"]
+	path = third_party/SuperGluePretrainedNetwork
+	url = https://github.com/magicleap/SuperGluePretrainedNetwork.git
