@@ -12,8 +12,8 @@ export sequence_id=$3
 echo "Extracting superpoint"
 python extract_superpoint.py --cuda --dataset-path $folder_dir --output-path $output_dir --test-sequence $sequence_id
 
-echo "Extracting d2-net"
-python extract_d2-net.py --dataset-path $folder_dir --output-path $output_dir --test-sequence $sequence_id
+echo "Extracting d2_net"
+python extract_d2_net.py --dataset-path $folder_dir --output-path $output_dir --test-sequence $sequence_id
 
 echo "Extracting r2d2"
 python extract_r2d2.py --dataset-path $folder_dir --output-path $output_dir --test-sequence $sequence_id

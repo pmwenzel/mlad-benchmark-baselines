@@ -23,8 +23,8 @@ git submodule update --init
 To download the pretrained models for D2-Net please run the following:
 
 ```
-mkdir third_party/d2-net/models
-wget https://dsmn.ml/files/d2-net/d2_tf.pth -O third_party/d2-net/models/d2_tf.pth
+mkdir third_party/d2_net/models
+wget https://dsmn.ml/files/d2-net/d2_tf.pth -O third_party/d2_net/models/d2_tf.pth
 ``` 
 
 ## Downloading data

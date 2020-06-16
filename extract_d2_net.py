@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.append(os.path.join('third_party', 'd2-net'))
+sys.path.append(os.path.join('third_party', 'd2_net'))
 
 import argparse
 
@@ -13,12 +13,12 @@ from pyquaternion import Quaternion
 from tqdm import tqdm
 import cv2
 from utils import load_image, estimate_pose_PnPRansac, load_calibration
-from lib.model_test import D2Net
-from lib.utils import preprocess_image
-from lib.pyramid import process_multiscale
+from third_party.d2_net.lib.model_test import D2Net
+from third_party.d2_net.lib.utils import preprocess_image
+from third_party.d2_net.lib.pyramid import process_multiscale
 
 
-# Based on third_party/d2-net/extract_features.py
+# Based on third_party/d2_net/extract_features.py
 def extract_features_d2(model, image, multiscale):
     if len(image.shape) == 2:
         image = image[:, :, np.newaxis]
@@ -95,7 +95,7 @@ parser.add_argument(
 )
 parser.add_argument(
     '--model_file', type=str, default=os.path.join(
-        'third_party', 'd2-net', 'models', 'd2_tf.pth'),
+        'third_party', 'd2_net', 'models', 'd2_tf.pth'),
     help='path to the full model'
 )
 
@@ -180,7 +180,7 @@ for tsk in tasks:
 
     # Result file
     reloc_result = open(
-        os.path.join(args.output_path, 'relocalizationResult_d2-net_eccv-challenge-' + target_seq + '_' + tsk + '.txt'),
+        os.path.join(args.output_path, 'relocalizationResult_d2_net_eccv-challenge-' + target_seq + '_' + tsk + '.txt'),
         'w')
 
     # Process the file

@@ -57,8 +57,8 @@ from tqdm import tqdm
 from utils import load_image, estimate_pose_PnPRansac, load_calibration
 import numpy as np
 
-from models.matching import Matching
-from models.utils import frame2tensor
+from third_party.SuperGluePretrainedNetwork.models.matching import Matching
+from third_party.SuperGluePretrainedNetwork.models.utils import frame2tensor
 
 torch.set_grad_enabled(False)
 
